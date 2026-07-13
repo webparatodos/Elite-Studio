@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Env files (contienen secretos: tokens de Sanity, etc.)
+.env
+.env.local
+.env*.local
+
+# Payload / SQLite (pendiente de retirar en la migración a Sanity)
+*.db
+media/
+
+# Sanity
+.sanity/
+
+# Misc
+.DS_Store
+*.log
