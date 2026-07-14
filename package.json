@@ -12,20 +12,25 @@
   },
   "dependencies": {
     "@portabletext/react": "^6.2.0",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^6.4.0",
     "framer-motion": "^11.15.0",
+    "gsap": "^3.15.0",
     "next": "16.2.10",
     "next-sanity": "^13.1.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "sanity": "^6.4.0",
-    "styled-components": "^6.4.3"
+    "styled-components": "^6.4.3",
+    "three": "^0.185.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.0",
+    "@types/three": "^0.185.1",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
