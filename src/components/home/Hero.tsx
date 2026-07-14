@@ -1,34 +1,30 @@
 'use client'
 
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+
+const HeroScene = dynamic(() => import('./hero/HeroScene').then((m) => m.HeroScene), {
+  ssr: false,
+})
 
 export function Hero({ tagline }: { tagline?: string | null }) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
 
   return (
-    <section ref={ref} className="relative h-screen w-full overflow-hidden">
-      <motion.div style={{ y }} className="absolute inset-0">
-        <video
-          className="h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/images/hero-poster.jpg"
-        >
-          <source src="/videos/hero-placeholder.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/70 via-ink-950/40 to-ink-950" />
-      </motion.div>
+    <section ref={ref} className="relative h-screen w-full overflow-hidden bg-ink-950">
+      <HeroScene sectionRef={ref} />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink-950 pointer-events-none" />
 
+      {/* pointer-events-none: this box spans the full hero height (for the justify-end text
+          layout) and would otherwise sit on top of the canvas and silently swallow every
+          mousemove, so the particle scene underneath never sees the cursor. */}
       <motion.div
         style={{ opacity }}
-        className="relative z-10 h-full container-px flex flex-col justify-end pb-24"
+        className="relative z-10 h-full container-px flex flex-col justify-end pb-24 pointer-events-none"
       >
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -61,7 +57,7 @@ export function Hero({ tagline }: { tagline?: string | null }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-8 flex gap-4"
+          className="mt-8 flex gap-4 pointer-events-auto"
         >
           <Link
             href="/contacto"
