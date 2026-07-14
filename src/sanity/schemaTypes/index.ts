@@ -11,6 +11,8 @@ import { portfolioItem } from './portfolioItem'
 import { pricing } from './pricing'
 import { musicPage } from './musicPage'
 import { message } from './message'
+import { seo } from './seo'
+import { imageWithAlt } from './imageWithAlt'
 import {
   textBlock,
   pricingBlock,
@@ -36,6 +38,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     pricing,
     musicPage,
     message,
+    // Objetos reutilizables
+    seo,
+    imageWithAlt,
     // Objetos de bloque
     textBlock,
     pricingBlock,

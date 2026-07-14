@@ -22,7 +22,12 @@ export function ContactSection({ siteSettings }: { siteSettings: SiteSettings })
     <section id="contacto" className="container-px py-28 grid grid-cols-1 lg:grid-cols-2 gap-14">
       <Reveal>
         <p className="text-accent uppercase tracking-[0.3em] text-sm mb-3">Hablemos</p>
-        <h2 className="font-display text-4xl md:text-5xl mb-8 text-balance">Contacto</h2>
+        <h2 className="font-display text-4xl md:text-5xl mb-6 text-balance">Contacto</h2>
+        <p className="text-white/60 leading-relaxed mb-8 max-w-md">
+          ¿Quieres reservar una clase, alquilar una sala o hablar de tu próximo proyecto
+          audiovisual? Escríbenos, llámanos o pásate por el estudio en Madrid. Respondemos en un
+          plazo máximo de 24-48 horas laborables.
+        </p>
 
         <div className="space-y-2 mb-8 text-white/70">
           {siteSettings?.address && <p>{siteSettings.address}</p>}

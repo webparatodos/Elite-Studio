@@ -8,3 +8,7 @@ export function mediaUrl(
 ): string {
   return imageUrl(image, width, height)
 }
+
+export function mediaAlt(image: { alt?: string | null } | null | undefined, fallback: string): string {
+  return image?.alt || fallback
+}

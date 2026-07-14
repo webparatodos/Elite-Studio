@@ -1,8 +1,19 @@
 import Image from 'next/image'
+import type { Metadata } from 'next'
 import { client } from '@/sanity/lib/client'
 import { TEAM_QUERY } from '@/sanity/lib/queries'
 import { mediaUrl } from '@/lib/media'
+import { buildMetadata } from '@/lib/seo'
 import { Reveal } from '@/components/Reveal'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    fallbackTitle: 'Conócenos en Élite Estudio Madrid',
+    fallbackDescription:
+      'Conoce la historia, la misión y el equipo de Élite Estudio, escuela de danza y productora audiovisual en Madrid.',
+    path: '/nosotros',
+  })
+}
 
 export default async function NosotrosPage() {
   const team = await client.fetch(TEAM_QUERY)
@@ -50,6 +61,7 @@ export default async function NosotrosPage() {
                     src={mediaUrl(member.photo, 500, 650)}
                     alt={member.name}
                     fill
+                    quality={60}
                     sizes="(max-width: 768px) 50vw, 25vw"
                     className="object-cover"
                   />
@@ -77,6 +89,7 @@ export default async function NosotrosPage() {
                 src={`https://picsum.photos/seed/elite-galeria-${i}/600/600`}
                 alt="Galería Élite Estudio"
                 fill
+                quality={60}
                 sizes="25vw"
                 className="object-cover"
               />

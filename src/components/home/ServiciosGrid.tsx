@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { mediaUrl } from '@/lib/media'
+import { mediaUrl, mediaAlt } from '@/lib/media'
 import { Reveal } from '@/components/Reveal'
 
 type Service = {
@@ -30,8 +30,9 @@ export function ServiciosGrid({ services }: { services: Service[] }) {
             >
               <Image
                 src={mediaUrl(service.heroImage, 800, 1000)}
-                alt={service.title}
+                alt={mediaAlt(service.heroImage, `Servicio ${service.title} en Élite Estudio Madrid`)}
                 fill
+                quality={60}
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />

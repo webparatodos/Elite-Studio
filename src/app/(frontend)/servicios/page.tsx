@@ -1,7 +1,18 @@
+import type { Metadata } from 'next'
 import { client } from '@/sanity/lib/client'
 import { SERVICES_QUERY } from '@/sanity/lib/queries'
+import { buildMetadata } from '@/lib/seo'
 import { ServiciosGrid } from '@/components/home/ServiciosGrid'
 import { Reveal } from '@/components/Reveal'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    fallbackTitle: 'Servicios de Danza y Audiovisual',
+    fallbackDescription:
+      'Clases de baile, formación profesional, campamento, alquiler de salas, agencia, producción audiovisual, estudio de foto y diseño gráfico en Madrid.',
+    path: '/servicios',
+  })
+}
 
 export default async function ServiciosPage() {
   const services = await client.fetch(SERVICES_QUERY)

@@ -1,7 +1,18 @@
+import type { Metadata } from 'next'
 import { client } from '@/sanity/lib/client'
 import { SITE_SETTINGS_QUERY } from '@/sanity/lib/queries'
+import { buildMetadata } from '@/lib/seo'
 import { ContactSection } from '@/components/ContactSection'
 import { Reveal } from '@/components/Reveal'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    fallbackTitle: 'Contacta con Élite Estudio Madrid',
+    fallbackDescription:
+      'Ponte en contacto con Élite Estudio en Madrid: teléfono, email, ubicación y formulario de contacto.',
+    path: '/contacto',
+  })
+}
 
 export default async function ContactoPage() {
   const siteSettings = await client.fetch(SITE_SETTINGS_QUERY)

@@ -16,13 +16,13 @@ export const service = defineType({
     defineField({ name: 'order', title: 'Orden', type: 'number', initialValue: 0 }),
     defineField({ name: 'shortDescription', title: 'Descripción corta', type: 'text', rows: 3 }),
     defineField({ name: 'description', title: 'Descripción', type: 'array', of: [{ type: 'block' }] }),
-    defineField({ name: 'heroImage', title: 'Imagen destacada', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'heroImage', title: 'Imagen destacada', type: 'imageWithAlt' }),
     defineField({ name: 'heroVideoUrl', title: 'URL de vídeo (YouTube/Vimeo o mp4)', type: 'url' }),
     defineField({
       name: 'gallery',
       title: 'Galería',
       type: 'array',
-      of: [{ type: 'image', options: { hotspot: true } }],
+      of: [{ type: 'imageWithAlt' }],
     }),
     defineField({
       name: 'features',
@@ -54,6 +54,7 @@ export const service = defineType({
         { type: 'planBlock' },
       ],
     }),
+    defineField({ name: 'seo', title: 'SEO', type: 'seo' }),
   ],
   preview: {
     select: { title: 'title', media: 'heroImage' },

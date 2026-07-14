@@ -22,6 +22,7 @@ const serviceFullProjection = groq`{
   gallery,
   features,
   blocks,
+  seo,
 }`
 
 export const SERVICES_QUERY = groq`*[_type == "service"] | order(order asc) ${serviceCardProjection}`
@@ -53,11 +54,13 @@ export const NEWS_HOME_QUERY = groq`*[_type == "news"] | order(publishedDate des
 export const NEWS_BY_SLUG_QUERY = groq`*[_type == "news" && slug.current == $slug][0]{
   "id": _id,
   title,
+  "slug": slug.current,
   excerpt,
   content,
   publishedDate,
   featuredImage,
   categories,
+  seo,
 }`
 
 export const NEWS_CATEGORIES_QUERY = groq`array::unique(*[_type == "news"].categories[])`

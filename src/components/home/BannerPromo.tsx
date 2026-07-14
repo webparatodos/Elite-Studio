@@ -10,6 +10,7 @@ export function BannerPromo() {
           src="https://picsum.photos/seed/elite-campamento/1800/900"
           alt="Campamento de verano Élite Estudio"
           fill
+          quality={60}
           sizes="100vw"
           className="object-cover"
         />

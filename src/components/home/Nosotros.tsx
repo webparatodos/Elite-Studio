@@ -11,6 +11,7 @@ export function Nosotros() {
             src="https://picsum.photos/seed/elite-nosotros/900/1100"
             alt="Equipo de Élite Estudio ensayando"
             fill
+            quality={60}
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
           />

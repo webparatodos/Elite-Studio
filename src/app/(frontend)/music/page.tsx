@@ -1,11 +1,25 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { PortableText } from '@portabletext/react'
 import { client } from '@/sanity/lib/client'
 import { MUSIC_PAGE_QUERY } from '@/sanity/lib/queries'
 import { mediaUrl } from '@/lib/media'
+import { buildMetadata } from '@/lib/seo'
 import { Reveal } from '@/components/Reveal'
 import { PortfolioLightbox } from '@/components/service/PortfolioLightbox'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await client.fetch(MUSIC_PAGE_QUERY)
+  return buildMetadata({
+    fallbackTitle: 'Música y Grabación en Madrid',
+    fallbackDescription:
+      page?.heroSubtitle ||
+      'Producción musical, grabación y ensayo para artistas urbanos en Élite Estudio Madrid.',
+    fallbackImage: page?.heroImage,
+    path: '/music',
+  })
+}
 
 export default async function MusicPage() {
   const page = await client.fetch(MUSIC_PAGE_QUERY)
@@ -29,6 +43,8 @@ export default async function MusicPage() {
           src={mediaUrl(page?.heroImage, 1920, 1080)}
           alt={heroTitle}
           fill
+          quality={60}
+          sizes="100vw"
           priority
           className="object-cover"
         />

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { mediaUrl } from '@/lib/media'
+import { mediaUrl, mediaAlt } from '@/lib/media'
 import { Reveal } from '@/components/Reveal'
 
 type NewsItem = {
@@ -27,8 +27,9 @@ export function NewsGrid({ news }: { news: NewsItem[] }) {
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl mb-4">
                 <Image
                   src={mediaUrl(item.featuredImage, 800, 600)}
-                  alt={item.title}
+                  alt={mediaAlt(item.featuredImage, item.title)}
                   fill
+                  quality={60}
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />

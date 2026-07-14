@@ -61,6 +61,12 @@ export const siteSettings = defineType({
         { name: 'image', title: 'Imagen', type: 'image' },
       ],
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO por defecto',
+      type: 'seo',
+      description: 'Se usa como fallback en páginas que no tienen su propio SEO (Home, Nosotros, Contacto, Music, Novedades).',
+    }),
   ],
   preview: { prepare: () => ({ title: 'Configuración del sitio' }) },
 })

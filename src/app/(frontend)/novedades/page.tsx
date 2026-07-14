@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { client } from '@/sanity/lib/client'
 import {
   NEWS_LIST_QUERY,
@@ -7,11 +8,22 @@ import {
   NEWS_COUNT_BY_CATEGORY_QUERY,
   NEWS_CATEGORIES_QUERY,
 } from '@/sanity/lib/queries'
+import { buildMetadata } from '@/lib/seo'
 import { NewsGrid } from '@/components/home/NewsGrid'
 import { NewsCategoryFilter } from '@/components/NewsCategoryFilter'
 import { Reveal } from '@/components/Reveal'
 
 const PAGE_SIZE = 9
+
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    fallbackTitle: 'Últimas Novedades de Élite Estudio',
+    fallbackDescription:
+      'Últimas noticias, eventos y novedades de Élite Estudio: danza, formación, agencia y producción audiovisual.',
+    // Canonical fijo a /novedades: la paginación y el filtro de categoría no deben indexarse como URLs distintas.
+    path: '/novedades',
+  })
+}
 
 export default async function NovedadesPage({
   searchParams,

@@ -32,6 +32,7 @@ export function PortfolioLightbox({ items }: { items: PortfolioItem[] }) {
               src={item.imageSrc}
               alt={item.title}
               fill
+              quality={60}
               sizes="(max-width: 768px) 50vw, 33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-110"
             />

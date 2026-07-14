@@ -9,7 +9,7 @@ export const news = defineType({
     defineField({ name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' }, validation: (r) => r.required() }),
     defineField({ name: 'excerpt', title: 'Extracto', type: 'text', rows: 3 }),
     defineField({ name: 'content', title: 'Contenido', type: 'array', of: [{ type: 'block' }] }),
-    defineField({ name: 'featuredImage', title: 'Imagen destacada', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'featuredImage', title: 'Imagen destacada', type: 'imageWithAlt' }),
     defineField({ name: 'publishedDate', title: 'Fecha de publicación', type: 'datetime', validation: (r) => r.required() }),
     defineField({
       name: 'categories',
@@ -26,6 +26,7 @@ export const news = defineType({
         ],
       },
     }),
+    defineField({ name: 'seo', title: 'SEO', type: 'seo' }),
   ],
   preview: { select: { title: 'title', media: 'featuredImage' } },
 })
